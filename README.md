@@ -1,8 +1,8 @@
 # Deadlock Detection Tool
 
-This Go project simulates an operating-system resource allocation state, builds a wait-for graph, detects deadlock cycles, and reports practical recovery or prevention actions.
+This is a small Go command-line project for checking a fixed operating-system resource-allocation snapshot. It builds a wait-for graph, detects deadlock cycles, runs a simplified safe-state check, and prints practical recovery or prevention actions.
 
-The project also supports the theoretical discussion for the report: a current finite resource-allocation state can be checked for deadlock, but no general algorithm can perfectly predict whether every arbitrary program will eventually deadlock before it runs. That future-prediction problem is related to the same undecidability ideas behind the Halting Problem.
+The report uses the tool to separate two ideas: current-state deadlock detection is finite graph analysis, while perfect future deadlock prediction for arbitrary programs is not generally solvable.
 
 ## Run
 
@@ -54,8 +54,11 @@ Scenarios are JSON files with three maps:
 - Wait-for graph construction
 - Cycle detection in the wait-for graph
 - Safe-state checking similar to the idea behind Banker's Algorithm
+- Input validation for impossible resource snapshots
 - Recovery and prevention recommendations
 
-## Suggested Report Thesis
+## Design Notes
 
-Operating systems can detect deadlocks in a known resource-allocation state by modeling process waits as a graph and searching for cycles. However, predicting all future deadlocks for arbitrary programs is not completely solvable in general, because doing so would require reasoning about every possible future execution path of a program.
+- The detector lives in `internal/deadlock`; `cmd/deadlock` only handles command-line input and printing.
+- The JSON format uses flat `process:resource` keys so the examples stay short.
+- The program sorts graph output so screenshots and tests stay stable between runs.
