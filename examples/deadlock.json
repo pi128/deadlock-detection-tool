@@ -1,0 +1,17 @@
+{
+  "resources": {
+    "printer": 1,
+    "scanner": 1,
+    "database": 1
+  },
+  "allocations": {
+    "P1:printer": 1,
+    "P2:scanner": 1,
+    "P3:database": 1
+  },
+  "requests": {
+    "P1:scanner": 1,
+    "P2:database": 1,
+    "P3:printer": 1
+  }
+}
