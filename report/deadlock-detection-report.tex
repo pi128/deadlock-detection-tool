@@ -6,6 +6,7 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{hyperref}
+\usepackage{xurl}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{tikz}
@@ -182,7 +183,11 @@ This safe-state result is not the same as the cycle result. In this project it i
 
 \section{Implementation and Experimental Results}
 
-The project is implemented in Go. The command-line entry point is located in \texttt{cmd/deadlock}. The core detection logic is located in \texttt{internal/deadlock}. The examples are located in \texttt{examples}. I kept the detector in an \texttt{internal} package so the command-line formatting code would not be mixed with the graph and validation logic.
+The project is implemented in Go. The source code is available in the GitHub repository:
+\begin{center}
+\url{https://github.com/pi128/deadlock-detection-tool}
+\end{center}
+The command-line entry point is located in \texttt{cmd/deadlock}. The core detection logic is in \texttt{internal/deadlock}, and the sample input files are in \texttt{examples}. I kept the detector in an \texttt{internal} package so the command-line formatting code would not be mixed with the graph and validation logic.
 
 The project can be run with:
 
